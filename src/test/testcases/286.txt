@@ -1,0 +1,10 @@
+
+        test: function boolean () {
+                do {
+                    foo();
+                }
+                while (a < 20);
+            }
+        main: function void () {
+
+        }

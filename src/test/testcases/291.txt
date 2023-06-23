@@ -1,0 +1,17 @@
+
+        test: function boolean () {
+                do {
+                    a = 2;
+                    {
+                        r, s: integer;
+                        r = 2.0;
+                        {
+                            a, b: array [5] of integer;
+                        }
+                    }
+                }
+                while (a < 20);
+            }
+        main: function void () {
+
+        }

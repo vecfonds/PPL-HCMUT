@@ -1,0 +1,7 @@
+
+        fact: function integer (out n: integer, a:float, a_b: boolean, a_2b: string, bb: array [3,4,6,7] of integer) {
+            }
+        main: function void() {
+                t,v : string = "pk","pknguyen";
+                b: string = "abc\"abc\"";
+        }

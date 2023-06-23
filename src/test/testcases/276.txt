@@ -1,0 +1,9 @@
+
+        test: function boolean () {
+                for(i = 1*1, i < 102, i + 2) {
+                    if(i % 2 == 0) i = i + 1;
+                }
+            }
+        main: function void () {
+
+        }

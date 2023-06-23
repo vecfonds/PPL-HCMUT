@@ -1,0 +1,9 @@
+
+        test: function boolean () {
+            a :integer = ---3;
+            b :boolean = !true;
+            u :integer = 3;
+            }
+        main: function void () {
+
+        }

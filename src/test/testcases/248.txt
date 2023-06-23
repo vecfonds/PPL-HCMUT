@@ -1,0 +1,8 @@
+
+        test: function boolean () {
+            a[3] = a[2];
+
+            }
+        main: function void () {
+
+        }

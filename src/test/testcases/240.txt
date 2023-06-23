@@ -1,0 +1,7 @@
+
+        test: function boolean () {
+                r,s : auto = false,1+3+4+5;
+            }
+        main: function void () {
+            z = 0;
+        }

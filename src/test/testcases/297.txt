@@ -1,0 +1,15 @@
+
+        test: function boolean () {
+                do {
+                    a = 2;
+                    {{{}}}
+                    {{{{{}}}}}
+
+                }
+                while (a < 20);
+            }
+        a, b, c, d: integer = 3, 4, 6;
+
+        main: function void () {
+
+        }

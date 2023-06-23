@@ -1,0 +1,7 @@
+
+        test: function boolean () {
+
+            }
+        main: function void () {
+
+        }

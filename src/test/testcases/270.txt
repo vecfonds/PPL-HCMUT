@@ -1,0 +1,10 @@
+
+        test: function boolean () {
+                if(true)
+                    if(1)
+                        return 2;
+
+            }
+        main: function void () {
+
+        }

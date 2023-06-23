@@ -1,0 +1,8 @@
+
+        test: function boolean () {
+                r,s : array [3] of boolean = {true,true,true},{true,true,true};
+                t,v : string = "pk","pknguyen";
+            }
+        main: function void () {
+            z = 0;
+        }

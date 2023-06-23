@@ -1,0 +1,7 @@
+
+        test: function boolean () {
+                r,s : array [3] of string = {"Kangxi", "Yongzheng", "Qianlong"},{"Kangxi", "Yongzheng", "Qianlong"};
+            }
+        main: function void () {
+            z = 0;
+        }

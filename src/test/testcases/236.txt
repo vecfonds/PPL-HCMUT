@@ -1,0 +1,9 @@
+
+        test: function boolean () {
+                r,s : integer = 1+0-1*7%2,2;
+                t,v : string = "pk","pknguyen";
+                
+            }
+        main: function void () {
+
+        }

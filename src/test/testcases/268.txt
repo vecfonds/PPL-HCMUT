@@ -1,0 +1,9 @@
+
+        test: function boolean () {
+                if(true) return 2;
+
+            }
+
+        main: function void () {
+
+        }

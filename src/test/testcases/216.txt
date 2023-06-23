@@ -1,0 +1,7 @@
+
+        cat: function void () inherit animals {
+            }
+        main: function void () {
+                t,v : string = "pk","pknguyen";
+                b: string = "abc\"abc\"";
+        }

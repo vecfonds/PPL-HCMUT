@@ -1,0 +1,10 @@
+
+
+        test: function boolean () {
+                a: integer;
+                                t,v : string = "pk","pknguyen";
+                b: string = "abc\"abc\"";
+            }
+        main: function void () {
+
+        }

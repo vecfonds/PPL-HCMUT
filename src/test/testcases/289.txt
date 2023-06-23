@@ -1,0 +1,15 @@
+
+        test: function boolean () {
+                do {
+                    a = 2;
+                    {
+                        r, s: integer;
+                        r = 2.0;
+                        a[0] = s;
+                    }
+                }
+                while (a < 20);
+            }
+        main: function void () {
+
+        }

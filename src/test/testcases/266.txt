@@ -1,0 +1,11 @@
+
+        test: function boolean () {
+                if (1 > 2)
+                    if (!true) return 2;
+                else
+                    if(!false) return a[2,3];
+
+            }
+        main: function void () {
+
+        }

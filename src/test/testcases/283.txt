@@ -1,0 +1,17 @@
+
+        test: function boolean () {
+                do {
+                    a = a + 1;
+                    do {
+
+                        for(i = 1, i < 10, i + 1) {
+                            while(true) break;
+                        }
+                    }
+                    while(a < 10);
+                }
+                while (a < 20);
+            }
+        main: function void () {
+
+        }

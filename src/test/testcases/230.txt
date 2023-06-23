@@ -1,0 +1,9 @@
+
+        test: function boolean () {
+                a: integer =2_1123;
+                t,v : string = "pk","pknguyen";
+                b: string = "abc\"abc\"";
+            }
+        main: function void () {
+
+        }

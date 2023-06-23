@@ -1,0 +1,7 @@
+
+        test: function boolean () {
+                r,s : array [3] of integer = {1,2,3},{1,2,3};
+            }
+        main: function void () {
+
+        }

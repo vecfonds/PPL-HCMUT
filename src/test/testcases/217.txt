@@ -1,0 +1,12 @@
+
+         cat: function boolean () inherit animals {
+                             t,v : string = "pk","pknguyen";
+                b: string = "abc\"abc\"";
+            }
+
+            teacher: function float () inherit person {
+            }
+        main: function void () {
+                t,v : string = "pk","pknguyen";
+                b: string = "abc\"abc\"";
+        }

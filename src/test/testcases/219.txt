@@ -1,0 +1,9 @@
+
+        cat: function boolean (out a: integer, inherit voice: string) inherit animals {
+                           t,v : string = "pk","pknguyen";
+                b: string = "abc\"abc\"";
+            }
+        main: function void () {
+                t,v : string = "pk","pknguyen";
+                b: string = "abc\"abc\"";
+        }

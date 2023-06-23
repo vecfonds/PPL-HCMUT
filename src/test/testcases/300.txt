@@ -1,0 +1,21 @@
+
+        test: function boolean () {
+                do {
+                    a = 5;
+                    {
+                        readInteger();
+                        readFloat();
+                        readBoolean();
+                        printBoolean(!true);
+                        readString();
+                        printString("string");
+                        preventDefault();
+
+                    }
+
+                }
+                while (a < 20);
+            }
+        main: function void () {
+
+        }

@@ -1,0 +1,8 @@
+
+        test: function boolean () {
+            a :integer = 1000;
+            b :boolean = !false;
+            }
+        main: function void () {
+
+        }

@@ -1,0 +1,10 @@
+
+        test: function boolean () {
+                b: array [1+1] of float;
+                t,v : string = "pk","pknguyen";
+                b: string = "abc\"abc\"";               
+            }
+        main: function void () {
+                t,v : string = "pk","pknguyen";
+                b: string = "abc\"abc\"";
+        }

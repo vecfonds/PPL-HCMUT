@@ -1,0 +1,7 @@
+
+        test: function boolean () {
+                if (1 > 2) return 1;
+            }
+        main: function void () {
+
+        }

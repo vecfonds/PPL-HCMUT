@@ -1,0 +1,9 @@
+
+        test: function boolean () {
+                b: auto= 1+5*2-4%2;
+                t,v : string = "pk","pknguyen";
+                
+            }
+        main: function void () {
+
+        }

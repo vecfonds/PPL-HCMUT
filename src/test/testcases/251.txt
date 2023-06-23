@@ -1,0 +1,7 @@
+
+        test: function boolean () {
+            A[a[2]] = a[1];
+            }
+        main: function void () {
+
+        }
