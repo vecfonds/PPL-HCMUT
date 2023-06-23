@@ -1,0 +1,296 @@
+chương: NAME
+
+&ràng buộc
+định nghĩa: hoạt động liên kết 2 thứ
+thời gian ràng buộc: thời điểm mà việc ràng buộc được thực hiện
+-thời gian thiết kế ngôn ngữ
+-thời gian thực hiện ngôn ngữ
+-thời gian lập trình
+-thời gian biên dịch
+-thời gian liên kết
+-thời gian tải
+-thời gian chạy
+
+
+
+&Object
+-tham chiếu treo (dangling reference): là tham chiếu đến 1 đối tượng k còn tồn tại
+-rác (leak memory-garbage): là 1 đối tượng không thể truy cập thông qua 1 tham chiếu
+->tham chiếu treo nguy hiểm không tồn tại trong các ngôn ngữ thu thập rác bởi vì các đối tượng 
+chỉ được lấy lại khi chúng không thể truy cập được nữa(chỉ thu thập rác)
+vì đối tượng bị hủy, không gian bộ nhớ của biến đó sẽ được dùng lại cho biến khác, khi truy xuất đối tượng
+được cấp phát sau này làm sai chương trình
+
+
+&cấp phát đối tượng
+-static: thời gian tồn tại trong suốt thời gian thực thi (bắt đầu chạy đến khi ct kết thúc). cấp phát 
+cho biến toàn cục, hằng, chuỗi
+
+-stack dynamic: được tạo theo quy luật tạo trước hủy bỏ sau. biến cục bộ
+
+-explicit heap dynamic: có 1 lệnh cụ thể để tạo đối tượng
+
+-implicit heap dynamic: tự thân ct ngầm định tạo đối tượng k có lệnh cụ thể, đối tượng được tạo ra và hủy bỏ
+không theo 1 quy luật rõ ràng
+
+
+&block
+-định nghĩa: là 1 vùng văn bản chứa đựng khai báo cho vùng văn bản đó
+
+
+&tầm vực
+định nghĩa: tầm vực của một ràng buộc là vùng văn bản của chương chình mà ràng buộc có hiệu lực
+
+-tầm vực tĩnh: những khai báo được quyết định trong suốt thời gian dịch
+	+ràng buộc hiện tại: trong khối bao quanh chặt chẽ nhất
+	+phạm vị toàn cục
+	+phạm vi tĩnh cục bộ
+	
+
+-tầm vực động: tầm vực quyết định trong thời gian thực thi
+	+ràng buộc hiện tại: lần thực thi gần đây nhất nhưng k bị phá hủy
+
+
+&quy tắc tầm vực tĩnh cho các khối:
+-tham chiếu đến 1 số nhận dạng luôn bị ràng buộc với khai báo cục bộ nhất của nó
+-1 khai báo ẩn bên ngoài khối mà nó xuất hiện
+-các khai báo trong các khối bao quanh có thể nhìn thấy trong các khối bên trong, trừ khi chúng đã 
+được khai báo lại
+-các khối có thể được đặt tên và khai báo tên của nó được coi là 1 khai báo cục bộ của khối bên ngoài
+
+
+
+&môi trường tham khảo: hàm ngược của tầm vực
+-môi trường thao khảo của 1 câu lệnh là tập hơp tất cả các tên hiển thị cho câu lệnh ( tập hợp tất cả
+các khai báo mà phát biểu có thể sử dụng được)
+-trong ngôn ngữ có tầm vực tĩnh, đó là các tên cục bộ cộng với tất cả các tên hiển thị trong tất cả các
+phạm vi bao quanh
+-trong 1 ngôn ngữ có phạm vi động, môi trường tham khảo là các liên kết cục bộ cộng với tất cả các liên
+kết hiển thị trong tất cả các chương trình con đang hoạt động
+
+
+
+
+chương: TYPE
+
+&bản ghi (record):
+-1 bản ghi:
+	+ là tập hợp k đồng nhất của các phần tử dữ liệu
+	+ phần tử riêng lẻ được xác định bằng tên
+-trong hầu hết các ngôn ngữ, các ngôn ngữ OOP sử dụng các đối tượng làm bản ghi
+-các tác vụ trên record:
+	+việc gán rất phổ biến nếu các loại giống hệt nhau
+	+Ada cho phép so sánh bản ghi
+	+bản ghi Ada có thể được khởi tạo bằng các kí tự tổng hợp
+	+COBOL cung cấp MOVE CORRESONDING sao chép các trường có cùng tên
+-đánh giá: khá dễ và an toàn
+-so sánh:
+ARRAY:
+	-các thành phần có kiểu giống nhau
+	-truy xuất các phần tử cùng hình thức a[i]
+	-truy xuất thành phần động
+RECORD:
+	-các thành phần có kiểu khác nhau
+	-truy xuất qua tên
+	-truy xuất thành phần tĩnh
+
+&String:
+-tĩnh: độ dài chuỗi được cố định tại thời điểm biên dịch. Compile-time descriptor
+-động có giới hạn: độ dài chuỗi có thể được thay đổi nhưng nhỏ hơn giới hạn. run-time descriptor
+-động: độ dài chuỗi có thể được thay đổi mà không có bất kì giới hạn nào. run-time descriptor, linked list
+
+
+
+def foo(x,f) = f(f(x))
+
+1. foo là 1 hàm nên kiểu của nó là T1->T2
+trong đó T1 là kiểu đầu vào, T2 là kiểu đầu ra
+2. hàm này có 2 tham số nên T1 = T3* T4 
+trong đó T3 là kiểu của x (2a)
+	 T4 là kiểu của f (2b)
+3. trong phần thân của hàm có biểu thức f(x) 
+nên f là hàm và kiểu của nó là T5->T6 (3a)
+và x được truyền cho hàm f và từ 2a => T5 = T3 (3b)
+4. còn biểu thức f(f(x)) và (3a) T5 = T6 (4)
+5. kết quả của biểu thức cũng là kết quả của hàm foo và (1) và (3a) => T2 = T6 (5)
+6. từ (1) và (2a) => kiểu của foo là T3*T4->T2
+7. từ (6) và (3a) => kiểu của foo là (T3*(T5->T6))->T2
+8. từ (6) và (3b)(4)(5) => kiểu củ foo là (T3*(T3->T3)->T3
+chỉ có 1 kiểu biến trong kết quả để chúng ta có thể viết kiểu foo là (T*(T->T))->T  
+
+
+
+
+H(x,f,h){
+   s:=0
+   for i:=f(x) to h(x) do s:=s+i
+   return s
+}
+
+vì H là hàm có các tham số x,f,h nên kiểu của nó là (T1*T2*T3)->T4
+xét f(x), vì f là hàm có kiểu x nên kiểu của f(x) là T1->T2
+vì i là kiểu của int nên T2 là kiểu của int
+xét h(x), vì h là hàm có kiểu x nên kiểu của h(x) là T1->T3
+vì trong vòng for nên h(x) phái là kiểu int => T3 kiểu int
+vì i là kiểu int nên T4 là kiểu int
+vậy (T1*(T1->int)*(T1->int))->int
+
+
+
+Chương 12:
+
+&điều khiển trình tự: có 3 loại (cấp)
+-biểu thức
+-phát biểu
+-đơn vị (gọi ct con) = [trừu tượng hóa] điều khiển
+
+
+&định nghĩa ct con:
+-đặc tả:
+	tên ct con
+	thông số:
+		input+output
+		thứ tự
+		kiểu
+		cơ chế truyền thông số
+	hành vi ct con
+-hiện thực:
+	dữ liệu cục bộ
+	tập hợp các phát biểu tạo nên thân ct con
+
+
+&bảng hoạt động ct con:
+-được tạo ra mỗi khi ct con được gọi  
+-bị hủy khi ct con hoàn thành việc thực thi
+
+&1 bảng hoạt động ct con bao gôm:
+-phần tĩnh: đoạn mã
+-phần động: bản ghi hoạt động
+	thông số hình thức
+	dữ liệu cục bộ
+	địa chỉ trả về
+	những đường link khác
+
+&cơ chế ct con
+-Simple Call-Return (gọi trả về đơn giản)
+	không đệ quy
+	lệnh gọi tường minh
+	điểm vào đơn
+	truyền điều khiển tức thời
+	thực thi đơn
+
+-Recursive Call (gọi đệ quy)
+	có thể gọi đệ quy:
+		cuộc gọi đệ quy trực tiếp
+		cuộc gọi đệ quy gián tiếp (đệ quy lẫn nhau)
+	các tính năng khác giống gọi trả về đơn giản
+
+-Exception Processing Handler (xử lý biến cố)
+	không có lệnh gọi tường minh
+	được dùng trong:
+		lập trình xử lý sự kiện
+		xử lý lỗi
+
+*xác định khối được bảo vệ để chặn ngoại lệ được xử lý
+*xác định trình xử lý ngoại lệ được liên kết với khối được bảo vệ
+*ngữ nghĩa chấm dứt:
+	non-resumable(common) khi xử lý biến cố, không quay lại chỗ xảy ra biến cố, 
+thường kết hợp với stack unwinding
+	resumable:
+		quay lại ngay phát biểu xảy ra biến cố
+		quay lại sau phát biểu xảy ra biến cố
+
+-Coroutines (trình cộng hành) 1 quy trình điều tra có thể hoãn việc thực thi của nó
+và quyền kiểm soát sẽ trỡ lại với người gọi. Việc thực thi sau đó được tiếp tục
+tại nơi mà nó đã hoãn lại
+
+
+-Scheduled Subprograms
+	việc thực khi callee không được bắt đầu khi nó được gọi
+		lên lịch theo thời gian
+		lên lịch theo mức độ ưu tiên
+	được kiểm soát bởi người lập lịch
+
+-Tasks
+	có thể thực hiện đồng thời với các tác vụ khác 
+	chạy máy đa xử lý hoặc máy xử lý đơn sử dụng chia sẽ thời gian
+	vấn đề:
+		đồng bộ hóa: race condition, deadlock
+		communication (truyền thông)
+
+&tham số hình thức
+	chỉ là 1 tên đơn giản
+	giống với khai báo biến
+	ký hiệu liên quan đến cơ chế truyền tham số
+
+&tham số thực tế/đối số:
+	biểu thức
+
+
+&Parameter passing
+*input-output
+  
+by value-result: 
+xác định giá trị, truyền giá trị
+sự thay đổi giá trị không ảnh hưởng đến ct gọi, khi ct gọi kết thúc
+sẽ chép ngược lại làm thay đổi giá trị
+
+by reference
+xác định địa chỉ, truyền địa chỉ -> tạo thành bí danh
+cơ chế làm thay đổi thông số thực ngay khi thông số hình thức bị thay đổi mà không chờ đến khi chương trình
+được gọi kết thúc
+
+by name
+không tính toán thông số thực mà truyền mã của thông số thực cho thông số hình thức
+cơ chế làm thay đổi thông số thực ngay khi thông số hình thức bị thay đổi mà không chờ đến khi chương trình
+được gọi kết thúc
+
+*input only
+by value
+ngăn chặn những thay đổi trên thông số hình thức dẫn đến thay đổi trên thông số thực 
+sau khi kết thúc chương trình
+
+by constant reference
+buộc chương trình được gọi không thể thay đổi giá trị thông số hình thức
+
+*output only
+by result
+khi ct gọi kết thúc sẽ chép ngược lại làm thay đổi giá trị
+
+As a result of a function
+nhận kết quả của 1 hàm, có thêm tham gia biểu thức
+không có thông số thực
+
+
+
+
+
+
+
+
+
+
+
+
+gọi trả về đơn giản không cho phép đệ quy
+gọi đệ quy cho phép điều này
+chương trình đồng hành: 2 chương trình thay phiên nhau thực hiện công việc, khi một chương trình chạy chương trình kia buộc phải dùng lại, không có tính định thời, có thể chạy ở bất kì thời điểm nào
+task được phép chạy song song
+định thời được thực thi tại thời điểm t cho trước, chỉ thực hiện ở đúng thời điểm này, không được phép chênh lệch (nếu có thì không được quá nhiều, vài us)
+biến cố không có lời gọi cụ thể, chỉ như một phần của một chương trình hay hàm nào đó, không có tên
+
+
+lock-and-key: khóa key chỉ được mở khi vùng nhớ được gán vào là khả dụng, đối với trường hợp vùng nhớ không còn khả dụng hay đã bị hủy thì lock này sẽ khóa truy cập lại
+
+tombstone: dùng một vùng nhớ trung gian để giải quyết vấn đề alias (nguyên nhân gây ra dangling pointer), 
+thay vì trỏ trực tiếp vào vùng nhớ thì các alias này trỏ trực tiếp vào vùng nhớ đệm (vùng nhớ chứa địa chỉ vủa vùng trỏ tới), 
+khi một biến hủy vùng nhớ này lập tức vùng đệm sẽ được cập nhật và các alias khác sẽ nhận thấy rằng vùng nhớ đang truy xuất đã bị hủy
+
+
+
+
+
+
+
+
+
